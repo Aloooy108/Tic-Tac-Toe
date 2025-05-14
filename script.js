@@ -1,20 +1,4 @@
-// function gameBoard(){
-//     let score=0
-//     const win = ()=>score++
-//     return function returnScore(){
-//         return score
-//     }
-
-// }
-
-// const game =function(){
-//     let score=[0,0]
-//     function win(player){
-//         this.score[player]++
-//     }
-
-// }
-function game(){
+function game(){//function that keeps score or returns it
     let score=[0,0]
     function win(player){
         score[player]++
@@ -25,18 +9,21 @@ function game(){
     return{getScore,win}
 }
 function player(id){
-    this.id=id
-    const getID=()=>this.id
-    return{getID}
+    const getID=()=>id
+    return {getID}
 }
-const player1=player(0)
-const player2=player(1)
-const game1=game()
+function gameBoard(){
+    let board=[
+        [0,1,0],
+        [0,2,0],
+        [0,0,0]
+    ]
+    const getSpace=(i,j)=>board[i][j]
+    const writeSpace=(id,i,j)=>board[i][j]=id
+    return {getSpace,writeSpace}
+}
+const p1=player(0)
+const p2=player(1)
+const g1=game()
+const gb1=gameBoard()
 
-// function user(name){
-//     const user=name
-//     let score=0
-//     const addScore=()=>score++
-//     const getScore=()=>score
-//     return{user,addScore,getScore}
-// }
