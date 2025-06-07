@@ -36,7 +36,7 @@ function checkGameState(board) {
       [ [0,0], [1,1], [2,2] ],
       [ [0,2], [1,1], [2,0] ]
     ]
-  
+  //check for win
     for (const pattern of winPatterns) {
       const [a, b, c] = pattern
       const first = board[a[0]][a[1]]
@@ -49,7 +49,7 @@ function checkGameState(board) {
         return first
       }
     }
-  
+  //check for draw
     const isFull = board.every(row => row.every(cell => cell))
     if (isFull) {
       for (let i = 0; i < board.length; i++) {
@@ -59,7 +59,7 @@ function checkGameState(board) {
       }
       return 'Draw'
     }
-  
+    //return null if game still going
     return null
   }
 const p1 = player(0)
