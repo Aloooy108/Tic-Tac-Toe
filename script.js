@@ -41,6 +41,7 @@ function checkGameState(board) {
       const [a, b, c] = pattern
       const first = board[a[0]][a[1]]
       if (first && first === board[b[0]][b[1]] && first === board[c[0]][c[1]]) {
+        //clears the board after win
         for (let i = 0; i < board.length; i++) {
           for (let j = 0; j < board[i].length; j++) {
             board[i][j] = null
@@ -49,7 +50,7 @@ function checkGameState(board) {
         return first
       }
     }
-  //check for draw
+  //check for draw and clears the board if true
     const isFull = board.every(row => row.every(cell => cell))
     if (isFull) {
       for (let i = 0; i < board.length; i++) {
