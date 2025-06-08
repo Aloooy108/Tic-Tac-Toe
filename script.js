@@ -19,9 +19,7 @@ function gameBoard() {
         ['o', 'x', 'o']
     ]
     let score = [0, 0]
-    function win(player) {
-        score[player]++
-    }
+
     function getScore() {
         return score
     }
