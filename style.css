@@ -1,3 +1,69 @@
-body{
+:root {
+    --border: 5px solid #393939;
+    --symbol-color: #FF7F5B;
+}
+
+body {
+
+    margin: 0;
     background-color: #333;
+}
+
+#gridContainer {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    background-color: #424040;
+}
+
+.grid {
+    background-color: #605d5d;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+#tttGrid {
+    display: grid;
+    grid-template-columns: repeat(3,
+            /* 1fr */
+            minmax(50px, 10rem));
+    grid-template-rows: repeat(3,
+            /* 1fr */
+            minmax(50px, 10rem));
+}
+
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 50px;
+}
+
+.gridItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--symbol-color);
+    font-size: 2.5rem;
+}
+
+.gridItem:nth-child(-n+3) {
+    border-bottom: var(--border);
+}
+
+.gridItem:nth-child(3n+1) {
+    border-right: var(--border);
+}
+
+.gridItem:nth-child(3n) {
+    border-left: var(--border);
+}
+
+.gridItem:nth-child(n+7) {
+    border-top: var(--border);
 }

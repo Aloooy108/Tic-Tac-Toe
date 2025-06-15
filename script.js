@@ -14,9 +14,9 @@
 // }
 function gameBoard() {
     let board = [
-        ['x', null, 'o'],
-        ['o', 'x', 'x'],
-        ['o', 'x', 'o']
+        ['X', 'X', 'O'],
+        ['O', null, 'X'],
+        ['O', 'X', 'O']
     ]
     let score = [0, 0]
 
@@ -27,11 +27,19 @@ function gameBoard() {
     const getSpace = (i, j) => board[i][j]
     const writeSpace = (id, i, j) => {
         board[i][j] = id
-        if(checkGameState(board)=='x')score[0]++
-        if(checkGameState(board)=='o')score[1]++
+        let gameState = checkGameState(board)
+
+        if (gameState == 'X') {
+            score[0]++
+            displayScore()
+        }
+        else if (gameState == 'O') {
+            score[1]++
+            displayScore()
+        }
     }
     const getBoard = () => board
-    return { getSpace, writeSpace, getBoard, getWinner,getScore, win }
+    return { getSpace, writeSpace, getBoard, getWinner, getScore }
 }
 
 function checkGameState(board) {
@@ -56,6 +64,7 @@ function checkGameState(board) {
                     board[i][j] = null
                 }
             }
+            score[first]++
             return first
         }
     }
@@ -75,4 +84,12 @@ function checkGameState(board) {
 // const p1 = player(0)
 // const p2 = player(1)
 // const g1 = game()
-const gb1 = gameBoard()
+const gb1 = gameBoard();
+
+
+function displayScore() {
+    let score = document.getElementById("score")
+    let scoreArray = gb1.getScore()
+    score.innerHTML = scoreArray[0] + "-" + scoreArray[1]
+
+}
