@@ -42,9 +42,10 @@ h1 {
 
 h2 {
     margin-bottom: 50px;
+    font-size: 1.8em;
 }
 
-.gridItem {
+.gridCell{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,18 +53,18 @@ h2 {
     font-size: 2.5rem;
 }
 
-.gridItem:nth-child(-n+3) {
+.gridCell:nth-child(-n+3) {
     border-bottom: var(--border);
 }
 
-.gridItem:nth-child(3n+1) {
+.gridCell:nth-child(3n+1) {
     border-right: var(--border);
 }
 
-.gridItem:nth-child(3n) {
+.gridCell:nth-child(3n) {
     border-left: var(--border);
 }
 
-.gridItem:nth-child(n+7) {
+.gridCell:nth-child(n+7) {
     border-top: var(--border);
 }

@@ -33,7 +33,7 @@ function gameBoard() {
             score[0]++
             displayScore()
         }
-        else if (gameState == 'O') {
+        if (gameState == 'O') {
             score[1]++
             displayScore()
         }
@@ -59,6 +59,8 @@ function checkGameState(board) {
         const first = board[a[0]][a[1]]
         if (first && first === board[b[0]][b[1]] && first === board[c[0]][c[1]]) {
             //clears the board after win
+            displayBoard()
+            alert(first+' Wins')
             for (let i = 0; i < board.length; i++) {
                 for (let j = 0; j < board[i].length; j++) {
                     board[i][j] = null
@@ -71,6 +73,7 @@ function checkGameState(board) {
     //check for draw and clears the board if true
     const isFull = board.every(row => row.every(cell => cell))
     if (isFull) {
+        displayBoard()
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board[i].length; j++) {
                 board[i][j] = null
@@ -79,6 +82,7 @@ function checkGameState(board) {
         return 'Draw'
     }
     //return null if game still going
+    displayBoard()
     return null
 }
 // const p1 = player(0)
@@ -90,6 +94,19 @@ const gb1 = gameBoard();
 function displayScore() {
     let score = document.getElementById("score")
     let scoreArray = gb1.getScore()
-    score.innerHTML = scoreArray[0] + "-" + scoreArray[1]
+    score.innerHTML = scoreArray[0] + " - " + scoreArray[1]
 
 }
+
+function displayBoard() {
+    let counter = 0
+    let grid = document.getElementsByClassName('gridCell')
+    const board = gb1.getBoard()
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            grid[counter].innerHTML = board[i][j]
+            counter++
+        }
+    }
+}
+displayBoard()
